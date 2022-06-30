@@ -33,14 +33,77 @@ class _SideMenuState extends State<SideMenu> {
 
   startApi() async {
     //เอาตัวidของcustomerมาใช้กับหน้านี้แล้วเอาค่าไปใส่ในidUser
-    dynamic item = await getdata(); //ส่งค่าไปยัง getdataหรือตัวรับapi
-    setState(() {
-      data = item;
-    });
+    // dynamic item = await getdata(); //ส่งค่าไปยัง getdataหรือตัวรับapi
+    // setState(() {
+    //   // data = item;
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
+    var children2 = [
+      TextButton(
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Customerhome(index: 0),
+                  //แก้ตรงนี้--------------------------------------------------------------------------------------
+                ),
+                (route) => false);
+          },
+          child: Text('หน้าหลัก')),
+      TextButton(
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Customerhome(index: 2),
+                  //แก้ตรงนี้--------------------------------------------------------------------------------------
+                ),
+                (route) => false);
+          },
+          child: Text('วันที่รับ')),
+      TextButton(
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Customerhome(index: 1),
+                  //แก้ตรงนี้--------------------------------------------------------------------------------------
+                ),
+                (route) => false);
+          },
+          child: Text('สำหรับพนักงาน')),
+      // routeItem(
+      //   context,
+      //   Icon(Icons.house),
+      //   //แก้ตรงนี้--------------------------------------------------------------------------------------
+      //   'หน้าหลัก',
+      //   '/Page1',
+      // ),
+      // routeItem(
+      //   context,
+      //   Icon(Icons.event_note),
+      //   //แก้ตรงนี้--------------------------------------------------------------------------------------
+      //   'วันที่รับ',
+      //   '/book',
+      // ),
+      // // routeItem(
+      // //   context,
+      // //   Icon(Icons.map),
+      // //   //แก้ตรงนี้--------------------------------------------------------------------------------------
+      // //   'Map',
+      // //   '/Map',
+      // // ),
+      // routeItem(
+      //   context,
+      //   Icon(Icons.settings_backup_restore),
+      //   //แก้ตรงนี้--------------------------------------------------------------------------------------
+      //   'สำหรับพนักงาน',
+      //   '/DataUser',
+      // ),
+    ];
     return Drawer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,36 +170,7 @@ class _SideMenuState extends State<SideMenu> {
             child: ListView(
               physics: BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              children: [
-                routeItem(
-                  context,
-                  Icon(Icons.house),
-                  //แก้ตรงนี้--------------------------------------------------------------------------------------
-                  'หน้าหลัก',
-                  '/Page1',
-                ),
-                routeItem(
-                  context,
-                  Icon(Icons.event_note),
-                  //แก้ตรงนี้--------------------------------------------------------------------------------------
-                  'วันที่รับ',
-                  '/book',
-                ),
-                // routeItem(
-                //   context,
-                //   Icon(Icons.map),
-                //   //แก้ตรงนี้--------------------------------------------------------------------------------------
-                //   'Map',
-                //   '/Map',
-                // ),
-                routeItem(
-                  context,
-                  Icon(Icons.settings_backup_restore),
-                  //แก้ตรงนี้--------------------------------------------------------------------------------------
-                  'สำหรับพนักงาน',
-                  '/DataUser',
-                ),
-              ],
+              children: children2,
             ),
           ),
           Align(
@@ -187,23 +221,23 @@ class _SideMenuState extends State<SideMenu> {
   }
 }
 
-Future<dynamic> getdata() async {
-  final prefs =
-      await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
-  int? user_id = prefs.getInt('idm');
-  Uri url = Uri.parse('http://192.168.43.18/api/users/$user_id');
+// Future<dynamic> getdata() async {
+//   final prefs =
+//       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
+//   int? user_id = prefs.getInt('idm');
+//   Uri url = Uri.parse('http://192.168.1.38/api/users/$user_id');
 
-  return await http
-      .get(
-    url,
-    headers: headers,
-  )
-      .then((req) async {
-    if (req.statusCode == 200) {
-      var data = jsonDecode(req.body);
-      return data;
-    } else {
-      return null;
-    }
-  });
-}
+//   return await http
+//       .get(
+//     url,
+//     headers: headers,
+//   )
+//       .then((req) async {
+//     if (req.statusCode == 200) {
+//       var data = jsonDecode(req.body);
+//       return data;
+//     } else {
+//       return null;
+//     }
+//   });
+// }

@@ -123,7 +123,7 @@ Future<dynamic> getdataprofile() async {
   final prefs =
       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
   int? user_id = prefs.getInt('idm');
-  Uri url = Uri.parse('http://192.168.43.18:3200/api/users/$user_id');
+  Uri url = Uri.parse('http://192.168.1.38:3200/api/users/$user_id');
 
   return await http
       .get(
@@ -145,7 +145,7 @@ Future sendDataProfile1(fname, lname, phone, address, context) async {
   final prefs =
       await SharedPreferences.getInstance(); //เพิ่มตัวแชร์จากหน้าlogin
   int? user_id = prefs.getInt('idm');
-  Uri url = Uri.parse('http://192.168.43.18:3200/api/users/$user_id');
+  Uri url = Uri.parse('http://192.168.1.38:3200/api/users/$user_id');
   http
       .put(
     url,

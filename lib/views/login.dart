@@ -207,7 +207,7 @@ class LoginScreenState extends State<LoginScreen> {
 Future checkLogin(String username, String password, context) async {
   EasyLoading.init();
 
-  Uri url = Uri.parse('http://192.168.43.18:3200/api/users/login');
+  Uri url = Uri.parse('http://192.168.1.38:3200/api/users/login');
   http
       .post(
     url,
@@ -215,6 +215,7 @@ Future checkLogin(String username, String password, context) async {
     body: jsonEncode({"username": username, "password": password}),
   )
       .then((req) async {
+    print(req.statusCode);
     if (req.statusCode == 200) {
       final prefs = await SharedPreferences.getInstance();
       var data = jsonDecode(req.body);

@@ -122,7 +122,7 @@ class AdertiseState extends State<adertise> {
 Future checkPr(String prdate, String prdescription, context) async {
   EasyLoading.init();
 
-  Uri url = Uri.parse('http://192.168.43.18:3200/api/public_relations');
+  Uri url = Uri.parse('http://192.168.1.38:3200/api/public_relations');
   http
       .post(
     url,

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_project/model/sidemenu.dart';
 import 'package:flutter_application_project/views/homepage1.dart';
-import 'package:http/http.dart ' as http;
+import 'package:http/http.dart' as http;
 
 class CustomerDB extends StatefulWidget {
   const CustomerDB({Key? key}) : super(key: key);
@@ -116,7 +116,7 @@ class _CustomerDBState extends State<CustomerDB> {
 }
 
 Future<dynamic> getdata() async {
-  Uri url = Uri.parse('http://192.168.43.18:3200/api/users');
+  Uri url = Uri.parse('http://192.168.1.38:3200/api/users');
   return await http
       .get(
     url,

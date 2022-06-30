@@ -14,17 +14,23 @@ class Customerhome extends StatefulWidget {
 
 class CustomerHome extends State<Customerhome> {
   int _selectedIndex = 0;
-  @override
-  void initState() {
-    widget.index != null ? _selectedIndex = widget.index : _selectedIndex = 0;
-  }
-
   final screens = [
     Orders(),
     const CustomerDB(),
     HistoryOrders(),
     ProfileUpdate(),
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setScreens();
+  }
+
+  setScreens() {
+    print(widget.index);
+    widget.index != null ? _selectedIndex = widget.index : _selectedIndex = 0;
+  }
 
   void _onItemTapped(int index) {
     setState(() {
